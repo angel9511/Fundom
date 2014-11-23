@@ -12,17 +12,17 @@ public class MainController {
 	private String _tittle = "Fundom";
 	public MainController() {
 		// TODO Auto-generated constructor stub
-		ventana = new MainFrame();
+		window = new MainFrame();
 	}
 	
 	public void initGraphic(){
-		ventana.setTitle(_tittle );
-		ventana.setVisible(true);
-		ventana.setBounds(0, 0, 800, 600);
-		ventana.setExtendedState( Frame.MAXIMIZED_BOTH );
-		ventana.setBackground(Color.WHITE);
-		//ventana.setResizable(false);
-		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setTitle(_tittle );
+		window.setVisible(true);
+		window.setBounds(0, 0, 800, 600);
+		window.setExtendedState( Frame.MAXIMIZED_BOTH );
+		window.setBackground(Color.WHITE);
+		window.setResizable(false);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	public static MainController getInstance() {
@@ -40,7 +40,7 @@ public class MainController {
 
 	}
 	
-	private MainFrame ventana;
+	private MainFrame window;
 	private static MainController main;
 
 }
