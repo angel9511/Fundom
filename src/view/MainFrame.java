@@ -2,6 +2,7 @@ package view;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,6 +11,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -34,6 +36,7 @@ public class MainFrame extends JFrame{
 		
 		// TODO Area codigo personalizada, si es necesario
 		codeEditor = new JTextArea("Area texto");
+		scrollpanel = new JScrollPane(codeEditor);
 		codeEditor.setWrapStyleWord(true);
 		constraints.gridx = 0; 
 		constraints.gridy = 1; 
@@ -42,7 +45,7 @@ public class MainFrame extends JFrame{
 		constraints.fill = GridBagConstraints.BOTH;
 		constraints.weightx = 1.0;
 		constraints.weighty = 1.0;
-		this.getContentPane().add (codeEditor, constraints);
+		this.getContentPane().add (scrollpanel, constraints);
 		constraints.weightx = 0.0;
 		constraints.weighty = 0.0;
 		constraints.fill = GridBagConstraints.NONE;
@@ -135,6 +138,7 @@ public class MainFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//TODO
+				System.exit(0);
 			}
 		});
 		
@@ -213,6 +217,7 @@ public class MainFrame extends JFrame{
 		return tempMenuBar;
 	}
 	
+	private JScrollPane scrollpanel;
 	private JMenuBar menuBar;
 	private JTextField mediaLibrary;
 	private JTextField console;

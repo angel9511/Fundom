@@ -37,11 +37,9 @@ public class MainController {
 		// TODO Auto-generated method stub
 		MainController main = getInstance();
 		main.initGraphic();
-		System.out.printl(a)
-
+		
 	}
 	
 	private MainFrame window;
 	private static MainController main;
-	private String a = "Oíe khé.jpg"
 }
