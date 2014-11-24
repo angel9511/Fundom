@@ -82,7 +82,8 @@ public class MainFrame extends JFrame{
 		
 		// TODO Biblioteca (no se que tipo de elemento, para relleno ser�un panel)
 		// JPanel biblioteca = new JPanel();
-		mediaLibrary = new JTextField("Biblioteca?");
+		// mediaLibrary = new JTextField("Biblioteca?");
+		mediaLibrary = new Library();
 		constraints.gridx = 2; 
 		constraints.gridy = 1; 
 		constraints.gridwidth = 1; 
@@ -219,7 +220,8 @@ public class MainFrame extends JFrame{
 	
 	private JScrollPane scrollpanel;
 	private JMenuBar menuBar;
-	private JTextField mediaLibrary;
+	//private JTextField mediaLibrary;
+	private Library mediaLibrary;
 	private JTextField console;
 	private JTextField canvas;
 	private GridBagConstraints constraints;
