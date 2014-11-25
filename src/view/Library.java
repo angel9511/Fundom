@@ -43,6 +43,7 @@ public class Library extends JPanel {
 		
 	}
 	
+	/*Remove from hea*/
 	public void addImages(){
 		// TODO Lista de elementos
 		BufferedImage sun = null;
