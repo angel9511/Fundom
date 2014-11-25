@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
 @SuppressWarnings("serial")
@@ -25,16 +26,19 @@ public class Library extends JPanel {
         
         JTabbedPane tabbedPane = new JTabbedPane();
                 
-        JLabel panel1 = new JLabel();
-        tabbedPane.addTab("Botones", panel1);
+        blibrary = new ButtonLibrary();
+        bscroll = new JScrollPane(blibrary);
+        tabbedPane.addTab("Botones", bscroll);
         tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
         
-        JLabel panel2 = new JLabel();
-        tabbedPane.addTab("Imagenes", panel2);
+        ilibrary = new ImageLibrary();
+        iscroll = new JScrollPane(ilibrary);
+        tabbedPane.addTab("Imagenes", iscroll);
         tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
         
-        JLabel panel3 = new JLabel();
-        tabbedPane.addTab("Lecciones", panel3);
+        llibrary = new LessonLibrary();
+        lscroll = new JScrollPane(llibrary);
+        tabbedPane.addTab("Lecciones", lscroll);
         tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);
            
         add(tabbedPane);
@@ -43,7 +47,7 @@ public class Library extends JPanel {
 		
 	}
 	
-	/*Remove from hea*/
+	// TODO Esto no va aca, pero donde conaio va?
 	public void addImages(){
 		// TODO Lista de elementos
 		BufferedImage sun = null;
@@ -57,6 +61,11 @@ public class Library extends JPanel {
 		imageDictionary.put("Luna", moon);		
 	}
 	
-	
+	ImageLibrary ilibrary;
+	JScrollPane iscroll;
+	ButtonLibrary blibrary;
+	JScrollPane bscroll;
+	LessonLibrary llibrary;
+	JScrollPane lscroll;
 
 }
