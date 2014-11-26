@@ -28,7 +28,7 @@ public class MainFrame extends JFrame{
 		constraints.fill = GridBagConstraints.NONE;
 		
 		// Ubicacion EditordeTexto
-		codeEditor = new Editor("Area texto");
+		codeEditor = new Editor();
 		menuBar.setCodeEditor(codeEditor);
 		scrollpanel = new JScrollPane(codeEditor);
 		codeEditor.setWrapStyleWord(true);
@@ -74,7 +74,7 @@ public class MainFrame extends JFrame{
 		constraints.fill = GridBagConstraints.NONE;
 		
 		// Ubicacion Library
-		mediaLibrary = new Library();
+		mediaLibrary = new Library(codeEditor);
 		constraints.gridx = 2; 
 		constraints.gridy = 1; 
 		constraints.gridwidth = 1; 

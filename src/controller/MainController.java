@@ -21,7 +21,6 @@ public class MainController {
 		window.setBounds(0, 0, 800, 600);
 		window.setExtendedState( Frame.MAXIMIZED_BOTH );
 		window.setBackground(Color.WHITE);
-		window.setResizable(false);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	

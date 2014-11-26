@@ -20,13 +20,13 @@ import javax.swing.JTabbedPane;
 public class Library extends JPanel {
 	
 	public Map<String, BufferedImage> imageDictionary = new HashMap<String, BufferedImage>();
-	public Library() {
+	public Library(Editor e) {
 		// TODO Auto-generated constructor stub
 		super(new GridLayout(1, 1));
         
         JTabbedPane tabbedPane = new JTabbedPane();
                 
-        blibrary = new ButtonLibrary();
+        blibrary = new ButtonLibrary(e);
         bscroll = new JScrollPane(blibrary);
         tabbedPane.addTab("Botones", bscroll);
         tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);

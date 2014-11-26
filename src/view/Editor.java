@@ -4,9 +4,16 @@ import javax.swing.JTextArea;
 
 public class Editor extends JTextArea {
 	
-	public Editor(String name) {
+	public Editor() {
 		// TODO Auto-generated constructor stub
-		super(name);
+		super(schema);
 	}
+	
+	static String schema = "inicio : \n"
+			+ "\t elementos \n"
+			+ "\n"
+			+ "\t animacion \n"
+			+ "\n"
+			+ "FUN";
 
 }
