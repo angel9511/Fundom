@@ -18,6 +18,7 @@ public class LessonLibrary extends JTextArea {
 				+ "\t \t ... \n"
 				+ "FUN");
 		setEditable(false);
+		setTabSize(4);
 	}
 
 }

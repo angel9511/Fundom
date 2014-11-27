@@ -29,9 +29,12 @@ public class MainFrame extends JFrame{
 		
 		// Ubicacion EditordeTexto
 		codeEditor = new Editor();
+		codeEditor.setWrapStyleWord(true);
+		codeEditor.setTabSize(4);
+		codeEditor.setColumns(15);
+		codeEditor.setRows(15);
 		menuBar.setCodeEditor(codeEditor);
 		scrollpanel = new JScrollPane(codeEditor);
-		codeEditor.setWrapStyleWord(true);
 		constraints.gridx = 0; 
 		constraints.gridy = 1; 
 		constraints.gridwidth = 1; 

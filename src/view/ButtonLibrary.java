@@ -37,7 +37,7 @@ public class ButtonLibrary extends JPanel {
 		buttons.put("mover", "\t \t_____ : mover \n"
 				+ "\t \t \t direccion : ______ \n"
 				+ "\t \t \t pasos : ______ \n"
-				+ "\t \t \t tiempo : ____ segundos");
+				+ "\t \t \t tiempo : ____ segundos \n");
 		buttons.put("tp", "\t \t_____ : tp \n"
 				+ "\t \t \t direccion : ______ \n"
 				+ "\t \t \t pasos : ______ \n");

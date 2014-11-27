@@ -18,7 +18,7 @@ public class MainController {
 	public void initGraphic(){
 		window.setTitle(_tittle );
 		window.setVisible(true);
-		window.setBounds(0, 0, 800, 600);
+		window.setBounds(0, 0, 1200, 720);
 		window.setExtendedState( Frame.MAXIMIZED_BOTH );
 		window.setBackground(Color.WHITE);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
