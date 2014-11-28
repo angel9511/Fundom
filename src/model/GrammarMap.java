@@ -7,6 +7,8 @@ public abstract class GrammarMap {
 
 	public static Map<String, String> getGrammar(){
 		Map<String , String> buttons = new HashMap<String, String>();
+		buttons.put("insertar", "\t \t _____ : insertar \n"
+				+ "\t \t \t posicion : __,__");
 		buttons.put("mover", "\t \t_____ : mover \n"
 				+ "\t \t \t direccion : ______ \n"
 				+ "\t \t \t pasos : ______ \n"

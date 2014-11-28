@@ -80,8 +80,8 @@ public class FuncodeBaseListener implements FuncodeListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDefining(@NotNull FuncodeParser.DefiningContext ctx)
-	{
+	@Override public void enterDefining(@NotNull FuncodeParser.DefiningContext ctx) 
+	{ 
 		String a = ctx.getText();
 		String s = "";
 		for(int c = 0; c < a.length(); c++)
@@ -120,22 +120,21 @@ public class FuncodeBaseListener implements FuncodeListener {
 		System.out.println("ANTLEAER " + ctx.getText() + "\n" + variable+ "\n" + variablex + "\n" + variabley);
 		for (int index = 0; index < variable.size(); index++)
 			MainController.getInstance().defineFigure(variable.get(index), variablex.get(index), variabley.get(index));
+		
 	}
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDefining(@NotNull FuncodeParser.DefiningContext ctx) { 
-		MainController.getInstance().runThreads();		
-	}
+	@Override public void exitDefining(@NotNull FuncodeParser.DefiningContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPreaction(@NotNull FuncodeParser.PreactionContext ctx)
+	@Override public void enterPreaction(@NotNull FuncodeParser.PreactionContext ctx) 
 	{
 		String a = ctx.getText();
 		String s = "";
@@ -335,7 +334,8 @@ public class FuncodeBaseListener implements FuncodeListener {
 			if(c< a.length())
 				s += a.charAt(c);
 		}
-		System.out.println("Out of buggy 4");		
+		System.out.println("Out of buggy 4");
+		
 	}
 	/**
 	 * {@inheritDoc}
@@ -401,11 +401,7 @@ public class FuncodeBaseListener implements FuncodeListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAction(@NotNull FuncodeParser.ActionContext ctx)
-	{
-		
-		
-	}
+	@Override public void enterAction(@NotNull FuncodeParser.ActionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -415,8 +411,6 @@ public class FuncodeBaseListener implements FuncodeListener {
 	{
 		String a = ctx.getText();
 		System.out.println(a);
-		
-		
 	}
 
 	/**

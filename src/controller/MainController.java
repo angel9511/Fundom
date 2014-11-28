@@ -51,16 +51,17 @@ public class MainController {
 	
 	public void letsAntlr(){
 		this.text = window.getText();
-		JOptionPane.showMessageDialog(null, "COMPILIN'!!!\n" + text);
+		JOptionPane.showMessageDialog(null, "Se ejecutara!\n" + text);
 		try { 
-			FuncodeLexer analex = new FuncodeLexer(new ANTLRFileStream("C:\\Users\\Angel\\Downloads\\Antlr\\Funcode\\Grammar.txt"));
+			CharStream stream = new ANTLRInputStream(text);
+			FuncodeLexer analex = new FuncodeLexer(stream);
 			CommonTokenStream tokens = new CommonTokenStream(analex);
 			FuncodeParser anasint = new FuncodeParser(tokens);
 			ParseTreeWalker walker = new ParseTreeWalker();
 		    FuncodeBaseListener listener = new FuncodeBaseListener();
 		    walker.walk(listener, anasint.start());
 		} catch (Exception fnfe) { 
-			System.err.println("No se encontrÅEel archivo"); 
+			System.err.println("No se encontrÔøΩEel archivo"); 
 			fnfe.printStackTrace();
 		}
 	}

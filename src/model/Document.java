@@ -16,7 +16,7 @@ public class Document {
 	{
 		modified = false;
 		name = "";
-	    schema =  "inicio : \n"
+	    schema =  "inicio \n"
 				+ "\t elementos \n"
 				+ "\n"
 				+ "\t animacion \n"
