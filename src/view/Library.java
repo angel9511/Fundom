@@ -19,7 +19,6 @@ import javax.swing.JTabbedPane;
 @SuppressWarnings("serial")
 public class Library extends JPanel {
 	
-	public Map<String, BufferedImage> imageDictionary = new HashMap<String, BufferedImage>();
 	public Library(Editor e) {
 		// TODO Auto-generated constructor stub
 		super(new GridLayout(1, 1));
@@ -45,20 +44,6 @@ public class Library extends JPanel {
       
         tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		
-	}
-	
-	// TODO Esto no va aca, pero donde conaio va?
-	public void addImages(){
-		// TODO Lista de elementos
-		BufferedImage sun = null;
-		BufferedImage moon = null;
-		try {
-			sun = ImageIO.read(new File("sol.jpg"));
-			moon = ImageIO.read(new File("luna.jpg"));
-		} catch (IOException e) {	}
-		
-		imageDictionary.put("Sol", sun);
-		imageDictionary.put("Luna", moon);		
 	}
 	
 	ImageLibrary ilibrary;

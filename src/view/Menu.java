@@ -8,6 +8,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
 
+import model.GrammarMap;
+
+import controller.MainController;
+
 public class Menu extends JMenuBar {
 	
 	/**
@@ -22,7 +26,7 @@ public class Menu extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{				
-				//TODO: Create new document and stuff
+				MainController.getInstance().newDocument();
 			}
 		});
 		
@@ -30,7 +34,7 @@ public class Menu extends JMenuBar {
 		fileSave.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//TODO
+				MainController.getInstance().saveDocument();	
 			}
 		});
 		
@@ -38,7 +42,7 @@ public class Menu extends JMenuBar {
 		fileSaveAs.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//TODO
+				MainController.getInstance().saveDocument();//TODO
 			}
 		});
 		
@@ -46,7 +50,7 @@ public class Menu extends JMenuBar {
 		fileLoad.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//TODO
+				MainController.getInstance().loadDocument();
 			}
 		});
 		
@@ -54,8 +58,7 @@ public class Menu extends JMenuBar {
 		fileQuit.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//TODO
-				System.exit(0);
+				MainController.getInstance().quit();
 			}
 		});
 		
@@ -98,29 +101,66 @@ public class Menu extends JMenuBar {
 		editMenu.add( paste );
 		
 		JMenu insertMenu = new JMenu("Insertar codigo");
-		JMenuItem insertImage = new JMenuItem("Insertar imagen");
-		insertImage.addActionListener( new ActionListener() {
+		JMenuItem mover = new JMenuItem("Mover imagen");
+		mover.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				codeEditor.insert("___ : insertar \n posicion : __,__", codeEditor.getCaretPosition());
+				codeEditor.insert(GrammarMap.getGrammar().get("mover"), codeEditor.getCaretPosition());
 			}
 		});
 		
-		insertMenu.add(insertImage);
+		JMenuItem tp = new JMenuItem("Teletransportar imagen");
+		tp.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				codeEditor.insert(GrammarMap.getGrammar().get("tp"), codeEditor.getCaretPosition());
+			}
+		});
 		
-		JMenu compileMenu = new JMenu("Compilar");
+		JMenuItem esperar = new JMenuItem("Esperar imagen");
+		esperar.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				codeEditor.insert(GrammarMap.getGrammar().get("esperar"), codeEditor.getCaretPosition());
+			}
+		});
+		
+		JMenuItem ocultar = new JMenuItem("Ocultar imagen");
+		ocultar.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				codeEditor.insert(GrammarMap.getGrammar().get("ocultar"), codeEditor.getCaretPosition());
+			}
+		});
+		
+		JMenuItem mostrar = new JMenuItem("Mostrar imagen");
+		mostrar.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				codeEditor.insert(GrammarMap.getGrammar().get("mostrar"), codeEditor.getCaretPosition());
+			}
+		});
+		
+		insertMenu.add(mover);
+		insertMenu.add(tp);
+		insertMenu.add(esperar);
+		insertMenu.add(mostrar);
+		insertMenu.add(ocultar);
+		
+		JMenuItem compileMenu = new JMenuItem("Compilar");
 		compileMenu.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//TODO
+				MainController.getInstance().letsAntlr();
 			}
 		});
 		
-		JMenu helpMenu = new JMenu( "Ayuda" );
+		JMenuItem helpMenu = new JMenuItem( "Ayuda" );
 		helpMenu.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//TODO
+				System.out.println("HALP!!");
 			}
 		});
 		
