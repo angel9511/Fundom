@@ -107,14 +107,6 @@ public class MainFrame extends JFrame{
 		codeEditor.setText(text);
 	}
 	
-	private JScrollPane scrollpanel;
-	private JScrollPane scrollconsole;
-	private Menu menuBar;
-	private Library mediaLibrary;
-	private Console console;
-	private Canvas canvas;
-	private GridBagConstraints constraints;
-	private Editor codeEditor;
 	public void moveImage(String name, int dx, int dy) {
 		canvas.moveImage(name, dx, dy);
 	}
@@ -128,4 +120,19 @@ public class MainFrame extends JFrame{
 		// TODO Auto-generated method stub
 		canvas.setItemVisible(name, b);
 	}
+
+	public void setConsoleMsm(String error) {
+		// TODO Auto-generated method stub
+		console.setText(error);
+		console.repaint();
+	}
+	
+	private JScrollPane scrollpanel;
+	private JScrollPane scrollconsole;
+	private Menu menuBar;
+	private Library mediaLibrary;
+	private Console console;
+	private Canvas canvas;
+	private GridBagConstraints constraints;
+	private Editor codeEditor;
 }

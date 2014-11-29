@@ -147,22 +147,28 @@ public class Menu extends JMenuBar {
 		insertMenu.add(mostrar);
 		insertMenu.add(ocultar);
 		
-		JMenuItem compileMenu = new JMenuItem("Compilar");
-		compileMenu.addActionListener( new ActionListener() {
+		JMenu compileMenu = new JMenu("Ejecutar");
+		JMenuItem compile = new JMenuItem("Compilar");
+		compile.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				MainController.getInstance().letsAntlr();
 			}
 		});
 		
-		JMenuItem helpMenu = new JMenuItem( "Ayuda" );
-		helpMenu.addActionListener( new ActionListener() {
+		compileMenu.add(compile);
+		
+		JMenu helpMenu = new JMenu("Acerca");
+		JMenuItem help = new JMenuItem( "Ayuda" );
+		help.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//TODO
 				System.out.println("HALP!!");
 			}
 		});
+		
+		helpMenu.add(help);
 		
 		add( fileMenu );
 		add( editMenu );
