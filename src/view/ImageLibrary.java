@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -20,10 +21,9 @@ import org.omg.CORBA.BAD_CONTEXT;
 public class ImageLibrary extends JPanel{
 	
 	public Map<String, BufferedImage> imageDictionary = new HashMap<String, BufferedImage>();
-	//BoxLayout by = new BoxLayout(this, BoxLayout.Y_AXIS);
-	GridLayout gy = new GridLayout(2, 2);
+	GridLayout gy = new GridLayout(4, 2);
 	
-	public ImageLibrary() {
+	public ImageLibrary(Editor e) {
 		setLayout(gy);
 		BufferedImage ghost = null;
 		BufferedImage zero = null;
@@ -110,7 +110,7 @@ public class ImageLibrary extends JPanel{
 			 heureusegateau = ImageIO.read(ImageLibrary.class.getResourceAsStream("/images/40.jpg"));;
 			 doratheexplorer = ImageIO.read(ImageLibrary.class.getResourceAsStream("/images/41.jpg"));;
 			
-		} catch (IOException e) {	}
+		} catch (IOException w) {	}
 		
 		imageDictionary.put("fantasma",  ghost );
 		imageDictionary.put("enmascarado",  zero );
@@ -154,47 +154,47 @@ public class ImageLibrary extends JPanel{
 		imageDictionary.put("pastelfeliz",  heureusegateau );
 		imageDictionary.put("peruana",  doratheexplorer );
 		
-		JLabel lghost  = new JLabel(new ImageIcon(ghost));;
-		JLabel lzero  = new JLabel(new ImageIcon(zero));;
-		JLabel lluffy  = new JLabel(new ImageIcon(luffy));;
-		JLabel llizardon  = new JLabel(new ImageIcon(lizardon));;
-		JLabel lnanoha  = new JLabel(new ImageIcon(nanoha));;
-		JLabel lcat  = new JLabel(new ImageIcon(cat));;
-		JLabel ljojo  = new JLabel(new ImageIcon(jojo));;
-		JLabel lburger  = new JLabel(new ImageIcon(burger));;
-		JLabel lhappyface  = new JLabel(new ImageIcon(happyface));;
-		JLabel lclown  = new JLabel(new ImageIcon(clown));;
-		JLabel lelmo  = new JLabel(new ImageIcon(elmo));;
-		JLabel lcookiemonster  = new JLabel(new ImageIcon(cookiemonster));;
-		JLabel labelardo  = new JLabel(new ImageIcon(abelardo));;
-		JLabel lxd  = new JLabel(new ImageIcon(xd));;
-		JLabel lclavin  = new JLabel(new ImageIcon(clavin));;
-		JLabel lsun  = new JLabel(new ImageIcon(sun));;
-		JLabel lmohammed  = new JLabel(new ImageIcon(mohammed));;
-		JLabel lhp  = new JLabel(new ImageIcon(hp));;
-		JLabel lthething  = new JLabel(new ImageIcon(thething));;
-		JLabel lkids  = new JLabel(new ImageIcon(kids));;
-		JLabel lswim  = new JLabel(new ImageIcon(swim));;
-		JLabel lblackkentuckychickenguy  = new JLabel(new ImageIcon(blackkentuckychickenguy));;
-		JLabel lblondgirl  = new JLabel(new ImageIcon(blondgirl));;
-		JLabel linterracial  = new JLabel(new ImageIcon(interracial));;
-		JLabel lgyaradous  = new JLabel(new ImageIcon(gyaradous));;
-		JLabel lmasterchief  = new JLabel(new ImageIcon(masterchief));;
-		JLabel lhappyfire  = new JLabel(new ImageIcon(happyfire));;
-		JLabel llittleblondgirl  = new JLabel(new ImageIcon(littleblondgirl));;
-		JLabel ltogepi  = new JLabel(new ImageIcon(togepi));;
-		JLabel lmoyashimon  = new JLabel(new ImageIcon(moyashimon));;
-		JLabel lcarlostomate  = new JLabel(new ImageIcon(carlostomate));;
-		JLabel lnokidsallowed  = new JLabel(new ImageIcon(nokidsallowed));;
-		JLabel ldragon  = new JLabel(new ImageIcon(dragon));;
-		JLabel leyelessgirl  = new JLabel(new ImageIcon(eyelessgirl));;
-		JLabel lhalfbearhalfbear  = new JLabel(new ImageIcon(halfbearhalfbear));;
-		JLabel lmii  = new JLabel(new ImageIcon(mii));;
-		JLabel lsurffer  = new JLabel(new ImageIcon(surffer));;
-		JLabel lrevolution  = new JLabel(new ImageIcon(revolution));;
-		JLabel lmoon  = new JLabel(new ImageIcon(moon));;
-		JLabel lheureusegateau  = new JLabel(new ImageIcon(heureusegateau));;
-		JLabel ldoratheexplorer  = new JLabel(new ImageIcon(doratheexplorer));;	
+		ImageButton lghost  = new ImageButton(new ImageIcon(ghost),"fantasma", e);;
+		ImageButton lzero  = new ImageButton(new ImageIcon(zero), "enmascarado", e);;
+		ImageButton lluffy  = new ImageButton(new ImageIcon(luffy),"cultivador", e);;
+		ImageButton llizardon  = new ImageButton(new ImageIcon(lizardon), "lagarto",e);;
+		ImageButton lnanoha  = new ImageButton(new ImageIcon(nanoha),"nena1",e);;
+		ImageButton lcat  = new ImageButton(new ImageIcon(cat),"gato",e);;
+		ImageButton ljojo  = new ImageButton(new ImageIcon(jojo),"chico1",e);;
+		ImageButton lburger  = new ImageButton(new ImageIcon(burger),"hamburguesa",e);;
+		ImageButton lhappyface  = new ImageButton(new ImageIcon(happyface),"feliz",e);;
+		ImageButton lclown  = new ImageButton(new ImageIcon(clown),"payaso",e);;
+		ImageButton lelmo  = new ImageButton(new ImageIcon(elmo),"elmo",e);;
+		ImageButton lcookiemonster  = new ImageButton(new ImageIcon(cookiemonster),"monstruogalletas",e);;
+		ImageButton labelardo  = new ImageButton(new ImageIcon(abelardo),"abelardo",e);;
+		ImageButton lxd  = new ImageButton(new ImageIcon(xd),"xD",e);;
+		ImageButton lclavin  = new ImageButton(new ImageIcon(clavin),"calvin",e);;
+		ImageButton lsun  = new ImageButton(new ImageIcon(sun),"sol",e);;
+		ImageButton lmohammed  = new ImageButton(new ImageIcon(mohammed),"ejecutivo",e);;
+		ImageButton lhp  = new ImageButton(new ImageIcon(hp),"hp",e);;
+		ImageButton lthething  = new ImageButton(new ImageIcon(thething),"monstruo",e);;
+		ImageButton lkids  = new ImageButton(new ImageIcon(kids),"nenes",e);;
+		ImageButton lswim  = new ImageButton(new ImageIcon(swim),"nadador",e);;
+		ImageButton lblackkentuckychickenguy  = new ImageButton(new ImageIcon(blackkentuckychickenguy),"chico2",e);;
+		ImageButton lblondgirl  = new ImageButton(new ImageIcon(blondgirl),"chica1",e);;
+		ImageButton linterracial  = new ImageButton(new ImageIcon(interracial),"ajedrez",e);;
+		ImageButton lgyaradous  = new ImageButton(new ImageIcon(gyaradous),"dragonasiatico",e);;
+		ImageButton lmasterchief  = new ImageButton(new ImageIcon(masterchief),"halo",e);;
+		ImageButton lhappyfire  = new ImageButton(new ImageIcon(happyfire),"fueguito",e);;
+		ImageButton llittleblondgirl  = new ImageButton(new ImageIcon(littleblondgirl),"nena2",e);;
+		ImageButton ltogepi  = new ImageButton(new ImageIcon(togepi),"huevo",e);;
+		ImageButton lmoyashimon  = new ImageButton(new ImageIcon(moyashimon),"germen",e);;
+		ImageButton lcarlostomate  = new ImageButton(new ImageIcon(carlostomate),"carlostomate",e);;
+		ImageButton lnokidsallowed  = new ImageButton(new ImageIcon(nokidsallowed),"prohibido",e);;
+		ImageButton ldragon  = new ImageButton(new ImageIcon(dragon),"dragon",e);;
+		ImageButton leyelessgirl  = new ImageButton(new ImageIcon(eyelessgirl),"chica2",e);;
+		ImageButton lhalfbearhalfbear  = new ImageButton(new ImageIcon(halfbearhalfbear),"oso",e);;
+		ImageButton lmii  = new ImageButton(new ImageIcon(mii),"mii",e);;
+		ImageButton lsurffer  = new ImageButton(new ImageIcon(surffer),"surfista",e);;
+		ImageButton lrevolution  = new ImageButton(new ImageIcon(revolution),"letrero",e);;
+		ImageButton lmoon  = new ImageButton(new ImageIcon(moon),"luna",e);;
+		ImageButton lheureusegateau  = new ImageButton(new ImageIcon(heureusegateau),"pastelfeliz",e);;
+		ImageButton ldoratheexplorer  = new ImageButton(new ImageIcon(doratheexplorer),"peruana",e);;	
 		
 		add( lghost );
 		add( lzero );
