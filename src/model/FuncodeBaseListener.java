@@ -86,7 +86,7 @@ public class FuncodeBaseListener implements FuncodeListener {
 		String s = "";
 		for(int c = 0; c < a.length(); c++)
 		{
-			System.out.println(s);
+			//System.out.println(s);
 			if(a.charAt(c) == ':' && !s.equals("insertarposicion")){
 				System.out.println(" | " + s);				
 				variable.add(s);
@@ -122,6 +122,7 @@ public class FuncodeBaseListener implements FuncodeListener {
 		System.out.println("ANTLEAER " + ctx.getText() + "\n" + variable+ "\n" + variablex + "\n" + variabley);
 		for (int index = 0; index < variable.size(); index++)
 			MainController.getInstance().defineFigure(variable.get(index), variablex.get(index), variabley.get(index));
+		MainController.getInstance().runThreads();
 	}
 	/**
 	 * {@inheritDoc}
@@ -129,7 +130,6 @@ public class FuncodeBaseListener implements FuncodeListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitDefining(@NotNull FuncodeParser.DefiningContext ctx) {
-		MainController.getInstance().runThreads();
 	}
 
 	/**

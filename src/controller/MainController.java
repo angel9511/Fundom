@@ -341,12 +341,32 @@ public class MainController {
 		getInstance().figureMap.put("letrero",  revolution );
 		getInstance().figureMap.put("luna",  moon );
 		getInstance().figureMap.put("pastelfeliz",  heureusegateau );
-		getInstance().figureMap.put("peruana",  doratheexplorer );	}
+		getInstance().figureMap.put("peruana",  doratheexplorer );	
+//		getInstance().figureMap.get("sol").setVisible();		
+//		getInstance().figureMap.get("sol").setTp(200, 200);
+//		System.out.println("Starting");
+//		getInstance().figureMap.get("sol").start();
+//		System.out.println("Joining");
+//		try {
+//			getInstance().figureMap.get("sol").join();
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//		getInstance().figureMap.get("sol").setMovement(200, 0, 5);
+//		getInstance().figureMap.get("sol").run();
+//		try {
+//			getInstance().figureMap.get("sol").join();
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//		getInstance().figureMap.get("sol").setMovement(0, 200, 15);
+//		getInstance().figureMap.get("sol").run();
+	}
 
 	public void defineFigure(String name, int x, int y)
 	{
-		figureMap.get(name).setTp(x, y);
 		figureMap.get(name).setVisible();
+		figureMap.get(name).setTp(x, y);
 		runningFigures.add(name);
 	}
 	
@@ -355,6 +375,11 @@ public class MainController {
 		System.out.println("The Name is " + name);
 		figureMap.get(name).setMovement(dx, dy, time);
 		figureMap.get(name).run();
+		try {
+			figureMap.get(name).join();
+		} catch (InterruptedException e) {
+			System.out.println("Error joining " + name);
+		}
 	}
 	
 	public void tpFigure(String name, int dx, int dy)
@@ -390,8 +415,19 @@ public class MainController {
 		for(String s: runningFigures)
 		{
 			figureMap.get(s).start();
-			repaint();
+			System.out.println("Starting " + s);
+//			repaint();
 		}
+		for(String s: runningFigures)
+		{
+			try {
+				figureMap.get(s).join();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+				System.out.println("Couldn't Join");
+			}
+		}
+		System.out.println("Ending to run threads");
 	}
 
 	Map<String, Figure> figureMap;

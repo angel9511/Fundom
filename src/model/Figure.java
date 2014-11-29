@@ -44,10 +44,10 @@ public class Figure extends Thread {
 				this.sleep(time * 1000 / Math.abs(Math.max(dx, dy))+1);
 				MainController.getInstance().repaint();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}	
-			//System.out.println(currentdx + "   " + currentdy);
+			if((currentdx % 100 == 0 && currentdx != dx )|| (currentdy % 100 == 0&& currentdy!=dy))
+				System.out.println(currentdx + "   " + currentdy);
 		}
 	}
 	
