@@ -347,6 +347,7 @@ public class MainController {
 	{
 		figureMap.get(name).setTp(x, y);
 		figureMap.get(name).setVisible();
+		runningFigures.add(name);
 	}
 	
 	public void moveFigure(String name, int dx, int dy, int time)

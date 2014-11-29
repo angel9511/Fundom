@@ -86,13 +86,16 @@ public class FuncodeBaseListener implements FuncodeListener {
 		String s = "";
 		for(int c = 0; c < a.length(); c++)
 		{
-			if(a.charAt(c) == ';'){
+			System.out.println(s);
+			if(a.charAt(c) == ':' && !s.equals("insertarposicion")){
+				System.out.println(" | " + s);				
 				variable.add(s);
 				s = "";
 			}
 			else
-				if(a.charAt(c)==':')
+				if(a.charAt(c)==':' && s.equals("insertarposicion"))
 				{
+					s="";
 					c++;
 					String futureInt = "" + a.charAt(c);
 					while(c< a.length()-1 && (a.charAt(c+1) == '1' || a.charAt(c+1) == '2' || a.charAt(c+1) == '3' || a.charAt(c+1) == '4' || a.charAt(c+1) == '5' || a.charAt(c+1) == '6' || a.charAt(c+1) == '7' || a.charAt(c+1) == '8' || a.charAt(c+1) == '9' || a.charAt(c+1) == '0'))
@@ -113,21 +116,21 @@ public class FuncodeBaseListener implements FuncodeListener {
 				}
 				else
 					s= s + a.charAt(c);
-			if(s.equals("elementos") || s.equals("insertar") || s.equals("posicion"))
-				s = "";
-			
+			if(s.equals("elementos"))
+				s = "";	
 		}
 		System.out.println("ANTLEAER " + ctx.getText() + "\n" + variable+ "\n" + variablex + "\n" + variabley);
 		for (int index = 0; index < variable.size(); index++)
 			MainController.getInstance().defineFigure(variable.get(index), variablex.get(index), variabley.get(index));
-		
 	}
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDefining(@NotNull FuncodeParser.DefiningContext ctx) { }
+	@Override public void exitDefining(@NotNull FuncodeParser.DefiningContext ctx) {
+		MainController.getInstance().runThreads();
+	}
 
 	/**
 	 * {@inheritDoc}
