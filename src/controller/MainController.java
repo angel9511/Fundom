@@ -361,27 +361,6 @@ public class MainController {
 //		}
 //		getInstance().figureMap.get("sol").setMovement(0, 200, 15);
 //		getInstance().figureMap.get("sol").run();
-//		try {
-//			getInstance().figureMap.get("sol").join();
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-		try { 
-			CharStream stream = new ANTLRInputStream("inicio"+
-					" elementos sol : insertar posicion :200,200 abelardo : insertar"+
-					"posicion : 0,0 animacion sol : mover direccion : derecha" + 
-					"pasos : 200 tiempo : 5 segundos sol : mover direccion : abajo"+
-					"pasos : 200 tiempo : 15 segundos FUN");
-			FuncodeLexer analex = new FuncodeLexer(stream);
-			CommonTokenStream tokens = new CommonTokenStream(analex);
-			FuncodeParser anasint = new FuncodeParser(tokens);
-			ParseTreeWalker walker = new ParseTreeWalker();
-		    FuncodeBaseListener listener = new FuncodeBaseListener();
-		    walker.walk(listener, anasint.start());
-		} catch (Exception fnfe) { 
-			System.err.println("Batman!"); 
-			fnfe.printStackTrace();
-		}
 	}
 
 	public void defineFigure(String name, int x, int y)
