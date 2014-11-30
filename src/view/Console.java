@@ -3,14 +3,17 @@ package view;
 import java.awt.Color;
 
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 
-public class Console extends JTextField {
+@SuppressWarnings("serial")
+public class Console extends JTextPane {
 	
 	public Console(String name) {
 		// TODO Auto-generated constructor stub
-		super(name);
 		setEditable(false);
-		setBackground(Color.GRAY);
+		setBackground(Color.BLACK);
+		setForeground(Color.white);
+		
 	}
 
 }

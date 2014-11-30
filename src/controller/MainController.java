@@ -6,10 +6,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
 import org.antlr.v4.runtime.*; 
 import org.antlr.v4.runtime.misc.Interval;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
+
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
@@ -23,12 +25,14 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 
 
+
+
 import model.Document;
 import model.Figure;
 import model.FuncodeBaseListener;
+import model.FuncodeErrorListener;
 import model.FuncodeLexer;
 import model.FuncodeParser;
-
 import view.MainFrame;
 
 public class MainController {
@@ -53,15 +57,19 @@ public class MainController {
 		this.text = window.getText();
 		JOptionPane.showMessageDialog(null, "Se ejecutara!\n" + text);
 		try { 
+			setConsoleMsm("");
 			CharStream stream = new ANTLRInputStream(text);
 			FuncodeLexer analex = new FuncodeLexer(stream);
 			CommonTokenStream tokens = new CommonTokenStream(analex);
 			FuncodeParser anasint = new FuncodeParser(tokens);
+			anasint.removeErrorListeners();
+			anasint.addErrorListener(new FuncodeErrorListener());
 			ParseTreeWalker walker = new ParseTreeWalker();
 		    FuncodeBaseListener listener = new FuncodeBaseListener();
 		    walker.walk(listener, anasint.start());
+		    stopThreads();
 		} catch (Exception fnfe) { 
-			System.err.println("No se encontr�Eel archivo"); 
+			System.err.println("No se encontro el archivo"); 
 			fnfe.printStackTrace();
 		}
 	}
@@ -115,7 +123,7 @@ public class MainController {
 				document.load( ois );
 				ois.close();
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(null, "File could not be \'LOAD\'");
+				JOptionPane.showMessageDialog(null, "El archivo no pudo ser \'LOAD\'");
 			}
 		}
 		else {
@@ -200,8 +208,8 @@ public class MainController {
 
 			r = JOptionPane.showConfirmDialog( 
 					window, 
-					"Doc has been modified, do you want to save it before continuing?",
-					"Save Drawing",
+					"El documento ha sido modificado, desea guardarlo antes de continuar?",
+					"Guardar documento",
 					JOptionPane.YES_NO_CANCEL_OPTION, 
 					JOptionPane.QUESTION_MESSAGE );
 			
@@ -341,7 +349,23 @@ public class MainController {
 		getInstance().figureMap.put("letrero",  revolution );
 		getInstance().figureMap.put("luna",  moon );
 		getInstance().figureMap.put("pastelfeliz",  heureusegateau );
-		getInstance().figureMap.put("peruana",  doratheexplorer );	
+		getInstance().figureMap.put("peruana",  doratheexplorer );
+//		try { 
+//			CharStream stream = new ANTLRInputStream("inicio"+
+//					" elementos sol : insertar posicion :200,200 abelardo : insertar "+
+//					"posicion : 0,0 animacion sol : mover direccion : derecha " + 
+//					"pasos : 200 tiempo : 5 segundos sol : mover direccion : abajo "+
+//					"pasos : 200 tiempo : 15 segundos FUN");
+//			FuncodeLexer analex = new FuncodeLexer(stream);
+//			CommonTokenStream tokens = new CommonTokenStream(analex);
+//			FuncodeParser anasint = new FuncodeParser(tokens);
+//			ParseTreeWalker walker = new ParseTreeWalker();
+//		    FuncodeBaseListener listener = new FuncodeBaseListener();
+//		    walker.walk(listener, anasint.start());
+//		} catch (Exception fnfe) { 
+//			System.err.println("No se encontro el archivo"); 
+//			fnfe.printStackTrace();
+//		}
 //		getInstance().figureMap.get("sol").setVisible();		
 //		getInstance().figureMap.get("sol").setTp(200, 200);
 //		System.out.println("Starting");
@@ -386,16 +410,35 @@ public class MainController {
 	{
 		figureMap.get(name).setTp(dx, dy);
 		figureMap.get(name).run();
+		try {
+			figureMap.get(name).join();
+		} catch (InterruptedException e) {
+			System.out.println("Error joining " + name);
+		}
 	}
 	
 	public void hideFigure(String name)
 	{
 		figureMap.get(name).setHide();
+		try {
+			figureMap.get(name).join();
+		} catch (InterruptedException e) {
+			System.out.println("Error joining " + name);
+		}
+	}
+	
+	public void setConsoleMsm(String error){
+		window.setConsoleMsm(error);
 	}
 	
 	public void showFigure(String name)
 	{
 		figureMap.get(name).setVisible();
+		try {
+			figureMap.get(name).join();
+		} catch (InterruptedException e) {
+			System.out.println("Error joining " + name);
+		}
 	}
 	public void isModified(boolean b) {
 		document.setModified(b);
@@ -429,9 +472,21 @@ public class MainController {
 		}
 		System.out.println("Ending to run threads");
 	}
+	
+	public void stopThreads() {
+		System.out.println("Starting to run threads");
+		for(String s: runningFigures)
+		{
+			figureMap.get(s).stop();
+			System.out.println("Stoping " + s);
+		}
+		
+		System.out.println("Ending to stop threads");
+	}
 
 	Map<String, Figure> figureMap;
 	List<String> runningFigures;
+	public String errorMsm;
 	private MainFrame window;
 	private static MainController main;
 	private Document document;

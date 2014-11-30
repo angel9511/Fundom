@@ -22,14 +22,12 @@ public class ButtonLibrary extends JPanel {
 	
 	public ButtonLibrary(Editor e) {
 		setLayout(by);
-		TextButton insertar = new TextButton("Insertar", GrammarMap.getGrammar().get("insertar"), e);
 		TextButton mover = new TextButton("Mover", GrammarMap.getGrammar().get("mover"), e);
 		TextButton tp = new TextButton("Teletransportar", GrammarMap.getGrammar().get("tp"), e);
 		TextButton esperar = new TextButton("Esperar", GrammarMap.getGrammar().get("esperar"), e);
 		TextButton ocultar = new TextButton("Ocultar", GrammarMap.getGrammar().get("ocultar"), e);
 		TextButton mostrar = new TextButton("Mostrar", GrammarMap.getGrammar().get("mostrar"), e);
 		
-		add(insertar);
 		add(mover);
 		add(tp);
 		add(esperar);

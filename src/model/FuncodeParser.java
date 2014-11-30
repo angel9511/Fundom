@@ -6,6 +6,9 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.misc.*;
 import org.antlr.v4.runtime.tree.*;
+
+import controller.MainController;
+
 import java.util.List;
 import java.util.Iterator;
 import java.util.ArrayList;
@@ -34,7 +37,7 @@ public class FuncodeParser extends Parser {
 		"start", "body", "defining", "defing", "position", "animate", "preaction", 
 		"action", "direction", "steps", "time", "operacion"
 	};
-
+	
 	@Override
 	public String getGrammarFileName() { return "Funcode.g4"; }
 
@@ -49,12 +52,13 @@ public class FuncodeParser extends Parser {
 
 	@Override
 	public ATN getATN() { return _ATN; }
-
+	
 	public FuncodeParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 	public static class StartContext extends ParserRuleContext {
+		
 		public TerminalNode INICIO() { return getToken(FuncodeParser.INICIO, 0); }
 		public TerminalNode EOF() { return getToken(FuncodeParser.EOF, 0); }
 		public BodyContext body() {

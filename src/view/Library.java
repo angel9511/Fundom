@@ -30,7 +30,7 @@ public class Library extends JPanel {
         tabbedPane.addTab("Botones", bscroll);
         tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
         
-        ilibrary = new ImageLibrary();
+        ilibrary = new ImageLibrary(e);
         iscroll = new JScrollPane(ilibrary);
         tabbedPane.addTab("Imagenes", iscroll);
         tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
