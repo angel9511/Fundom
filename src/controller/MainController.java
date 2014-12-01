@@ -39,7 +39,6 @@ public class MainController {
 	
 	private String _tittle = "Fundom";
 	public MainController() {
-		// TODO Auto-generated constructor stub
 		window = new MainFrame();
 		document = new Document();
 	}
@@ -192,8 +191,7 @@ public class MainController {
 				r = true;
 				
 			} catch (Exception e) {
-			
-				// TODO tell the user
+				JOptionPane.showMessageDialog(window, "Ha ocurrido un error al guardar el documento");
 			}
 		}
 		
@@ -350,6 +348,8 @@ public class MainController {
 		getInstance().figureMap.put("luna",  moon );
 		getInstance().figureMap.put("pastelfeliz",  heureusegateau );
 		getInstance().figureMap.put("peruana",  doratheexplorer );
+//		getInstance().hey();
+//		getInstance().letsAntlr();
 //		try { 
 //			CharStream stream = new ANTLRInputStream("inicio"+
 //					" elementos sol : insertar posicion :200,200 abelardo : insertar "+
@@ -387,6 +387,11 @@ public class MainController {
 //		getInstance().figureMap.get("sol").run();
 	}
 
+	public void hey()
+	{
+		letsAntlr();
+	}
+	
 	public void defineFigure(String name, int x, int y)
 	{
 		figureMap.get(name).setVisible();
@@ -440,6 +445,19 @@ public class MainController {
 			System.out.println("Error joining " + name);
 		}
 	}
+	
+	public void waitFigure(String name, int time)
+	{
+		figureMap.get(name).setWait(time);
+		figureMap.get(name).run();
+	}
+	
+	public void doStuff(String s)
+	{
+		if(s.equals("compilar"))
+			letsAntlr();
+	}
+	
 	public void isModified(boolean b) {
 		document.setModified(b);
 	}

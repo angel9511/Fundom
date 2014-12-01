@@ -112,6 +112,7 @@ public class MainFrame extends JFrame{
 	}
 
 	public void forceRepaint() {
+		revalidate();
 		repaint();
 		canvas.repaint();
 	}

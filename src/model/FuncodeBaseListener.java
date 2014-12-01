@@ -326,7 +326,7 @@ public class FuncodeBaseListener implements FuncodeListener {
 						}
 						else{
 							if(c+10 < a.length() && a.substring(0, c+10).contains("esperar")){
-								//TODO
+								// TODO MainController.getInstance().waitFigure(name, time);
 								c = a.length()+17;
 							}
 						}

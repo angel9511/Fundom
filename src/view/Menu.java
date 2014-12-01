@@ -6,9 +6,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 import model.GrammarMap;
+import model.MenuBugFix;
 
 import controller.MainController;
 
@@ -152,23 +154,25 @@ public class Menu extends JMenuBar {
 		compile.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainController.getInstance().letsAntlr();
+				//MainController.getInstance().doStuff(JOptionPane.showInputDialog("Escribe compilar"));
+				MenuBugFix b = new MenuBugFix();
+				b.start();
+				revalidate();
+				//MainController.getInstance().hey();
 			}
 		});
 		
 		compileMenu.add(compile);
 		
 		JMenu helpMenu = new JMenu("Acerca");
-		JMenuItem help = new JMenuItem( "Ayuda" );
-		help.addActionListener( new ActionListener() {
+		helpMenu.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//TODO
-				System.out.println("HALP!!");
+				JOptionPane.showMessageDialog(null, "Fundom\nDesarrollado por:\nAngel Avila: Programador, Diseniador, Concepto Original\nFrancisco Aranguren: Programador, Diseniador, Pedagogo, Experto en ASM, Veterano de guerra\nJhair Naranjo: Diseniador");
 			}
 		});
 		
-		helpMenu.add(help);
+		helpMenu.add(helpMenu);
 		
 		add( fileMenu );
 		add( editMenu );
