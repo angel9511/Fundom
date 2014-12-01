@@ -20,7 +20,6 @@ import javax.swing.JTabbedPane;
 public class Library extends JPanel {
 	
 	public Library(Editor e) {
-		// TODO Auto-generated constructor stub
 		super(new GridLayout(1, 1));
         
         JTabbedPane tabbedPane = new JTabbedPane();

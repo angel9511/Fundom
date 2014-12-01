@@ -164,15 +164,14 @@ public class Menu extends JMenuBar {
 		
 		compileMenu.add(compile);
 		
-		JMenu helpMenu = new JMenu("Acerca");
+		JMenuItem helpMenu = new JMenuItem("Acerca");
 		helpMenu.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("Batman");
 				JOptionPane.showMessageDialog(null, "Fundom\nDesarrollado por:\nAngel Avila: Programador, Diseniador, Concepto Original\nFrancisco Aranguren: Programador, Diseniador, Pedagogo, Experto en ASM, Veterano de guerra\nJhair Naranjo: Diseniador");
 			}
 		});
-		
-		helpMenu.add(helpMenu);
 		
 		add( fileMenu );
 		add( editMenu );

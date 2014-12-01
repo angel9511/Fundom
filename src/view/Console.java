@@ -9,11 +9,9 @@ import javax.swing.JTextPane;
 public class Console extends JTextPane {
 	
 	public Console(String name) {
-		// TODO Auto-generated constructor stub
 		setEditable(false);
 		setBackground(Color.BLACK);
 		setForeground(Color.white);
-		
 	}
 
 }

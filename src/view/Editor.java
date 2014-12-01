@@ -9,7 +9,6 @@ import controller.MainController;
 public class Editor extends JTextArea {
 	
 	public Editor() {
-		// TODO Auto-generated constructor stub
 		super(schema);
 		getDocument().addDocumentListener(new DocumentListener() {
 
