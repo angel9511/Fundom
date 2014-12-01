@@ -121,7 +121,11 @@ public class FuncodeBaseListener implements FuncodeListener {
 		}
 		System.out.println("ANTLEAER " + ctx.getText() + "\n" + variable+ "\n" + variablex + "\n" + variabley);
 		for (int index = 0; index < variable.size(); index++)
-			MainController.getInstance().defineFigure(variable.get(index), variablex.get(index), variabley.get(index));
+			if (MainController.getInstance().validImage(variable.get(index)))
+				MainController.getInstance().defineFigure(variable.get(index), variablex.get(index), variabley.get(index));
+			else
+				MainController.getInstance().setConsoleMsm("Imagen '"+variable.get(index)+ "' no se encuentra en la biblioteca\n");
+				
 		MainController.getInstance().runThreads();
 	}
 	/**
@@ -190,7 +194,13 @@ public class FuncodeBaseListener implements FuncodeListener {
 							else
 								time-=Integer.parseInt(futureInt2);
 						}
-						MainController.getInstance().moveFigure(name, Integer.parseInt(futureInt), 0,time);
+						if (time > 0)
+							if (variable.contains(name))
+								MainController.getInstance().moveFigure(name, Integer.parseInt(futureInt), 0,time);
+							else
+								MainController.getInstance().setConsoleMsm("La imagen '"+name+"' no ha sido insertada\n");
+						else
+							MainController.getInstance().setConsoleMsm("El tiempo debe ser positivo\n");
 						c = a.length()+17;
 					}
 					if(c+9 < a.length() && a.substring(c, c+9).contains("izquierda"))
@@ -229,7 +239,13 @@ public class FuncodeBaseListener implements FuncodeListener {
 							else
 								time-=Integer.parseInt(futureInt2);
 						}
-						MainController.getInstance().moveFigure(name, -Integer.parseInt(futureInt), 0,time);
+						if (time > 0)
+							if (variable.contains(name))
+								MainController.getInstance().moveFigure(name, -Integer.parseInt(futureInt), 0,time);																						
+							else
+								MainController.getInstance().setConsoleMsm("La imagen '"+name+"' no ha sido insertada\n");
+						else
+							MainController.getInstance().setConsoleMsm("El tiempo debe ser positivo\n");
 						c = a.length()+17;
 					}
 					if(c+9 < a.length() && a.substring(c, c+9).contains("arriba"))
@@ -268,7 +284,13 @@ public class FuncodeBaseListener implements FuncodeListener {
 							else
 								time-=Integer.parseInt(futureInt2);
 						}
-						MainController.getInstance().moveFigure(name, 0 , - Integer.parseInt(futureInt),time);
+						if (time > 0)
+							if (variable.contains(name))
+								MainController.getInstance().moveFigure(name, 0 , - Integer.parseInt(futureInt),time);															
+								else
+									MainController.getInstance().setConsoleMsm("La imagen '"+name+"' no ha sido insertada\n");
+						else
+							MainController.getInstance().setConsoleMsm("El tiempo debe ser positivo\n");
 						c = a.length()+17;
 					}
 					if(c+9 < a.length() && a.substring(c, c+9).contains("abajo"))
@@ -307,7 +329,13 @@ public class FuncodeBaseListener implements FuncodeListener {
 							else
 								time-=Integer.parseInt(futureInt2);
 						}
-						MainController.getInstance().moveFigure(name, 0 , Integer.parseInt(futureInt),time);
+						if (time > 0)
+							if (variable.contains(name))
+								MainController.getInstance().moveFigure(name, 0 , Integer.parseInt(futureInt),time);															
+								else
+									MainController.getInstance().setConsoleMsm("La imagen '"+name+"' no ha sido insertada\n");
+						else
+							MainController.getInstance().setConsoleMsm("El tiempo debe ser positivo \n");
 						c = a.length()+17;
 					}
 					
@@ -315,18 +343,24 @@ public class FuncodeBaseListener implements FuncodeListener {
 				else {
 					if(c+10 < a.length() && a.substring(0, c+10).contains("ocultar")){
 						c = c+7;
-						MainController.getInstance().hideFigure(name);
+						if (variable.contains(name))
+							MainController.getInstance().hideFigure(name);							
+						else
+							MainController.getInstance().setConsoleMsm("La imagen '"+name+"' no ha sido insertada\n");
 						c = a.length()+17;
 					}
 					else{
 						if(c+10 < a.length() && a.substring(0, c+10).contains("mostrar")){
 							c = c+7;
-							MainController.getInstance().showFigure(name);
+							if (variable.contains(name))
+								MainController.getInstance().showFigure(name);								
+							else
+								MainController.getInstance().setConsoleMsm("La imagen '"+name+"' no ha sido insertada\n");
 							c = a.length()+17;
 						}
 						else{
 							if(c+10 < a.length() && a.substring(0, c+10).contains("esperar")){
-								// TODO MainController.getInstance().waitFigure(name, time);
+								// MainController.getInstance().waitFigure(name, time);
 								c = a.length()+17;
 							}
 						}

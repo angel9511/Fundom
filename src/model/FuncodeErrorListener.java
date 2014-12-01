@@ -13,7 +13,7 @@ public class FuncodeErrorListener extends BaseErrorListener {
                             String msg,
                             RecognitionException e)
     {
-        MainController.getInstance().setConsoleMsm("linea "+line+":"+charPositionInLine+" error: "+msg);
+        MainController.getInstance().setConsoleMsm("linea "+line+":"+charPositionInLine+" error: "+msg+"\n");
     }
 
 }

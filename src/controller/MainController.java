@@ -27,6 +27,7 @@ import javax.swing.filechooser.FileFilter;
 
 
 
+
 import model.Document;
 import model.Figure;
 import model.FuncodeBaseListener;
@@ -348,6 +349,10 @@ public class MainController {
 		getInstance().figureMap.put("luna",  moon );
 		getInstance().figureMap.put("pastelfeliz",  heureusegateau );
 		getInstance().figureMap.put("peruana",  doratheexplorer );
+/*********************************************************************************
+*		 TEXT AREA 
+*		 
+*		
 //		getInstance().hey();
 //		getInstance().letsAntlr();
 //		try { 
@@ -385,6 +390,8 @@ public class MainController {
 //		}
 //		getInstance().figureMap.get("sol").setMovement(0, 200, 15);
 //		getInstance().figureMap.get("sol").run();
+ * 
+ *******************************************************************/
 	}
 
 	public void hey()
@@ -502,6 +509,10 @@ public class MainController {
 		System.out.println("Ending to stop threads");
 	}
 
+	public boolean validImage(String string) {
+		return figureMap.containsKey(string);		
+	}
+	
 	Map<String, Figure> figureMap;
 	List<String> runningFigures;
 	public String errorMsm;
@@ -510,5 +521,6 @@ public class MainController {
 	private Document document;
 	private String text;
 	public static String FUN_SUFFIX = ".fun";
+		
 
 }

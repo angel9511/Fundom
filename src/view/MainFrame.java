@@ -5,6 +5,8 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
 
 public class MainFrame extends JFrame{
 	
@@ -118,13 +120,16 @@ public class MainFrame extends JFrame{
 	}
 
 	public void setItemVisible(String name, boolean b) {
-		// TODO Auto-generated method stub
 		canvas.setItemVisible(name, b);
 	}
 
 	public void setConsoleMsm(String error) {
-		// TODO Auto-generated method stub
-		console.setText(error);
+		try {
+		      Document doc = console.getDocument();
+		      doc.insertString(doc.getLength(), error, null);
+		   } catch(BadLocationException exc) {
+		      exc.printStackTrace();
+		   }
 		console.repaint();
 	}
 	
