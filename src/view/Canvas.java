@@ -154,6 +154,15 @@ public class Canvas extends JPanel {
 	}
 
 	/**
+	 * Moves a given image to the position 0,0
+	 * @param name
+	 */
+	public void resetImage(String name) {
+		imageDictionary.get(name).setX(0);
+		imageDictionary.get(name).setY(0);
+	}
+
+	/**
 	 * Moves a given image a given distance(Instantly)
 	 * @param name the name of the image that will be moved
 	 * @param dx   the distance in x the image will be moved, can be negative
@@ -229,4 +238,5 @@ public class Canvas extends JPanel {
 	private ImageENation moon = new ImageENation();
 	private ImageENation heureusegateau = new ImageENation();
 	private ImageENation doratheexplorer = new ImageENation();
+
 }

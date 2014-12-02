@@ -4,6 +4,10 @@ import javax.swing.JTextArea;
 
 public class LessonLibrary extends JTextArea {
 	
+	/**
+	 * Contains a little introduction to the funcode 
+	 *  programming language
+	 */
 	public LessonLibrary() {
 		super("Bienvenido a Fundom: \n "
 				+ "El codigo tendra la estructura \n"

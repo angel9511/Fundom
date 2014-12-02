@@ -162,6 +162,11 @@ public class MainFrame extends JFrame{
 		   }
 		console.repaint();
 	}
+
+	public void resetImage(String name) 
+	{
+		canvas.resetImage(name);
+	}
 	
 	private JScrollPane scrollpanel;
 	private JScrollPane scrollconsole;
@@ -171,4 +176,5 @@ public class MainFrame extends JFrame{
 	private Canvas canvas;
 	private GridBagConstraints constraints;
 	private Editor codeEditor;
+
 }

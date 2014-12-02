@@ -65,6 +65,24 @@ public class MainController {
 	 * error listener and run the lenguaje interpreter 
 	 */
 	public void letsAntlr(){
+		for(String s: runningFigures)
+		{
+			figureMap.get(s).reset();
+			System.out.println("Hiding " + s);
+//			repaint();
+		}
+		for(String s: runningFigures)
+		{
+			try {
+				figureMap.get(s).join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println("Hiding " + s);
+//			repaint();
+		}
+		runningFigures.clear();
 		this.text = window.getText();
 		try { 
 			setConsoleMsm("");
@@ -281,46 +299,87 @@ public class MainController {
 		main.initGraphic();
 		System.out.println("There should be a window 2");
 		Figure ghost= new Figure("fantasma");
+		ghost.start();
 		Figure zero= new Figure("enmascarado");
+		zero.start();
 		Figure luffy= new Figure("cultivador");
+		luffy.start();
 		Figure lizardon= new Figure("lagarto");
+		lizardon.start();
 		Figure nanoha= new Figure("nena1");
+		nanoha.start();
 		Figure cat= new Figure("gato");
+		cat.start();
 		Figure jojo= new Figure("chico1");
+		jojo.start();
 		Figure burger= new Figure("hamburguesa");
+		burger.start();
 		Figure happyface= new Figure("feliz");
+		happyface.start();
 		Figure clown= new Figure("payaso");
+		clown.start();
 		Figure elmo= new Figure("elmo");
+		elmo.start();
 		Figure cookiemonster= new Figure("monstruogalletas");
+		cookiemonster.start();
 		Figure abelardo= new Figure("abelardo");
+		abelardo.start();
 		Figure xd= new Figure("xD");
+		xd.start();
 		Figure clavin= new Figure("calvin");
+		clavin.start();
 		Figure sun= new Figure("sol");
+		sun.start();
 		Figure mohammed= new Figure("ejecutivo");
+		mohammed.start();
 		Figure hp= new Figure("hp");
+		hp.start();
 		Figure thething= new Figure("monstruo");
+		thething.start();
 		Figure kids= new Figure("nenes");
+		kids.start();
 		Figure swim= new Figure("nadador");
+		swim.start();
 		Figure blackkentuckychickenguy= new Figure("chico2");
+		blackkentuckychickenguy.start();
 		Figure blondgirl= new Figure("chica1");
+		blondgirl.start();
 		Figure interracial= new Figure("ajedrez");
+		interracial.start();
 		Figure gyaradous= new Figure("dragonasiatico");
+		gyaradous.start();
 		Figure masterchief= new Figure("halo");
+		masterchief.start();
 		Figure happyfire= new Figure("fueguito");
+		happyfire.start();
 		Figure littleblondgirl= new Figure("nena2");
+		littleblondgirl.start();
 		Figure togepi= new Figure("huevo");
+		togepi.start();
 		Figure moyashimon= new Figure("germen");
+		moyashimon.start();
 		Figure carlostomate= new Figure("carlostomate");
+		carlostomate.start();
 		Figure nokidsallowed= new Figure("prohibido");
+		nokidsallowed.start();
 		Figure dragon= new Figure("dragon");
+		dragon.start();
 		Figure eyelessgirl= new Figure("chica2");
+		eyelessgirl.start();
 		Figure halfbearhalfbear= new Figure("oso");
+		halfbearhalfbear.start();
 		Figure mii= new Figure("mii");
+		mii.start();
 		Figure surffer= new Figure("surfista");
+		surffer.start();
 		Figure revolution= new Figure("letrero");
+		revolution.start();
 		Figure moon= new Figure("luna");
+		moon.start();
 		Figure heureusegateau= new Figure("pastelfeliz");
+		heureusegateau.start();
 		Figure doratheexplorer= new Figure("peruana");
+		doratheexplorer.start();
 		getInstance().figureMap.put("fantasma",  ghost );
 		getInstance().figureMap.put("enmascarado",  zero );
 		getInstance().figureMap.put("cultivador",  luffy );
@@ -530,13 +589,13 @@ public class MainController {
 	}
 	
 	/**
-	 * Starts the threads of the image defined in the document
+	 * Sets starting positions of the images defined in the document
 	 */
 	public void runThreads() {
 		System.out.println("Starting to run threads");
 		for(String s: runningFigures)
 		{
-			figureMap.get(s).start();
+			figureMap.get(s).run();
 			System.out.println("Starting " + s);
 //			repaint();
 		}
@@ -552,6 +611,11 @@ public class MainController {
 		System.out.println("Ending to run threads");
 	}
 
+	public void resetImage(String name)
+	{
+		window.resetImage(name);
+	}
+	
 	/**
 	 * Check if a inserted image exist on the library
 	 * @param string name of the image to check

@@ -117,6 +117,12 @@ public class Figure extends Thread {
 		MainController.getInstance().setVisible(name, true);
 	}
 	
+	public void reset()
+	{
+		setHide();
+		MainController.getInstance().resetImage(name);
+	}
+	
 	
 	private int dx;
 	private int dy;
