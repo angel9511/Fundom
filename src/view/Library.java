@@ -19,6 +19,13 @@ import javax.swing.JTabbedPane;
 @SuppressWarnings("serial")
 public class Library extends JPanel {
 	
+	/**
+	 * Creates a JPanel that contains the panels:
+	 *   - ButtonLibrary
+	 *   - ImageLibrary
+	 *   - LessonLibrary
+	 * @param e The editor that will be modified by the ImageButtons
+	 */
 	public Library(Editor e) {
 		super(new GridLayout(1, 1));
         

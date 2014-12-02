@@ -33,15 +33,22 @@ public class ImageENation {
 		this.i = i;
 	}
 
-
+	/**
+	 * Returns whether the image is visible
+	 * @return True if the image is visible, false if the image is invisible
+	 */
 	public boolean isVisible() {
 		return isVisible;
 	}
 
+	/**
+	 * Makes the image visible or invisible
+	 * @param isVisible If true the image becose visible, is false the image 
+	 *                   becomes invisible
+	 */
 	public void setVisible(boolean isVisible) {
 		this.isVisible = isVisible;
 	}
-
 
 	private int x = 0;
 	private int y = 0;

@@ -39,11 +39,19 @@ import view.MainFrame;
 public class MainController {
 	
 	private String _tittle = "Fundom";
+	
+	/**
+	 * MainController constructor 
+	 * initializes document used to store the code and the window
+	 */
 	public MainController() {
 		window = new MainFrame();
 		document = new Document();
 	}
 	
+	/**
+	 * Initializes the window with the default parameters and title
+	 */
 	public void initGraphic(){
 		window.setTitle(_tittle );
 		window.setVisible(true);
@@ -53,9 +61,12 @@ public class MainController {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
+	
+	/**
+	 * Compiles the code written in the code editor using ANTLR
+	 *///TODO Further documentate this method
 	public void letsAntlr(){
 		this.text = window.getText();
-		JOptionPane.showMessageDialog(null, "Se ejecutara!\n" + text);
 		try { 
 			setConsoleMsm("");
 			CharStream stream = new ANTLRInputStream(text);
@@ -67,57 +78,60 @@ public class MainController {
 			ParseTreeWalker walker = new ParseTreeWalker();
 		    FuncodeBaseListener listener = new FuncodeBaseListener();
 		    walker.walk(listener, anasint.start());
-		    stopThreads();
 		} catch (Exception fnfe) { 
 			System.err.println("No se encontro el archivo"); 
 			fnfe.printStackTrace();
 		}
 	}
 	
+	/**
+	 * Singleton design pattern
+	 * @return MainController instance of the singleton pattern
+	 */
 	public static MainController getInstance() {
-		
 		if ( main == null ) {
 			main = new MainController();
 		}
 		return main;
 	}
 	
+	/**
+	 * Creates a new document. If the current document has
+	 *  not been saved since last modification, prompts user
+	 *  for confirmation
+	 */
 	public void newDocument() {
 		int r = saveDocumentIfModified();
 		if ( r == JOptionPane.CANCEL_OPTION ) {
-			// noop
+			// Do nothing
 		}
 		else {
 			document.initialize();
 		}
 	}
 
+	/**
+	 * Loads a FUN file from disk in the text editor
+	 */
 	private void doLoadDocument() {
 		text = window.getText();
 		document.setText(text);
 		JFileChooser fc = new JFileChooser( System.getProperty( "user.home" ) );
 		fc.setFileSelectionMode( JFileChooser.FILES_ONLY );
 		fc.setFileFilter( new FileFilter() {
-			
 			@Override
 			public String getDescription() {
-
 				return "FUN files";
 			}
-			
 			@Override
-			public boolean accept(File f) {
-				
+			public boolean accept(File f) {	
 				return f.getName().endsWith( FUN_SUFFIX );
 			}
 		} );
 		fc.showOpenDialog( window );
-		
 		File f = fc.getSelectedFile();
 		if ( f != null ) {
-		
 			try {
-				
 				ObjectInputStream ois = new ObjectInputStream(
 											new FileInputStream( f ) );
 				document.load( ois );
@@ -127,133 +141,134 @@ public class MainController {
 			}
 		}
 		else {
-			// noop
+			// Do nothing
 		}
-
 		text = document.getSchema();
 		window.setText(text);
 	}
 
+	/**
+	 * Asks user for prompt in the case they try to load
+	 *  a document but the current document has not been
+	 *  saved, they can either load without saving, load
+	 *  after saving or cancel the load operation
+	 */
 	public void loadDocument() {
-
 		int r = saveDocumentIfModified();
 		if ( r == JOptionPane.CANCEL_OPTION ) {
-			// noop
+			// Do nothing
 		}
 		else {
 			doLoadDocument();
 		}			
 	}
 	
+	/**
+	 * Saves the document into disk
+	 * @return True if the save operation was successful, false otherwise
+	 */
 	public boolean saveDocument() {
-
 		text = window.getText();
 		document.setText(text);
 		boolean r = false;
-
 		String name = document.getName(); 
 		if ( name.isEmpty() ) {
-			
 			JFileChooser fc = new JFileChooser( System.getProperty( "user.home" ) );
 			fc.showSaveDialog( window );
-			
 			File f = fc.getSelectedFile();
 			if ( f != null ) {
-
 				name = f.getAbsolutePath();
 			}
 		}
-		
-		if ( name.isEmpty() ) {
-			
+		if ( name.isEmpty() ) {	
 			// user cancelled
 		}
 		else {
-			
 			if ( name.endsWith( FUN_SUFFIX ) ) {
-				// OK
+				// OK, Do nothing
 			}
 			else {
-			
 				name += FUN_SUFFIX;
 			}
-			
-			try {
-				
+			try {	
 				File f = new File( name );
-				// TODO if ( f.canWrite() )
-				// TODO if ( f.exists() )
 				ObjectOutputStream oos = new ObjectOutputStream(
 											new FileOutputStream( f ) );
 				document.save( oos );
 				oos.close();
-				
 				document.setName( f.getAbsolutePath() );
 				r = true;
-				
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(window, "Ha ocurrido un error al guardar el documento");
 			}
 		}
-		
 		return r;
 	}
 	
+	/**
+	 * When the user tries to close in some way a document
+	 *  a JOptionPane will ask user for prompt in the case
+	 *  the document has been modified, they can either 
+	 *  save it, continue the operation that would close
+	 *  the document or cancel it
+	 * @return An integer indicating the option selected by the user
+	 */
 	protected int saveDocumentIfModified() {
-		
 		int r = JOptionPane.YES_OPTION;
-				
 		if ( document.isModified() ) {
-
 			r = JOptionPane.showConfirmDialog( 
 					window, 
 					"El documento ha sido modificado, desea guardarlo antes de continuar?",
 					"Guardar documento",
 					JOptionPane.YES_NO_CANCEL_OPTION, 
 					JOptionPane.QUESTION_MESSAGE );
-			
 			if ( r == JOptionPane.YES_OPTION ) {
-				
 				if ( saveDocument() ) {
-					
 					// OK
 				}
 				else {
-					
-					// noop (user cancelled)
+					// Do nothing (user cancelled)
 				}
 			}
 			else {
-				
-				// noop
+				// Do nothing
 			}
 		}
 		else {
-			
 			// noop
-		}
-		
+		}		
 		return r;
 	}
 	
+	/**
+	 * Asks user for prompt in the case they try to close
+	 *  the program but the current document has not been
+	 *  saved, they can either quit without saving, quit
+	 *  after saving or don't quit the program
+	 */
 	public void quit() {
-
 		int r = saveDocumentIfModified();
 		if ( r == JOptionPane.CANCEL_OPTION ) {
-			
-			// noop
+			// Do nothing
 		}
 		else {
-			
 			System.exit(0);
 		}
 	}
 	
-
+	/**
+	 * Moves an image present in the canvas to another position 
+	 * @param name the name of the image
+	 * @param dx   the distance in x the image will be moved, can be negative
+	 * @param dy   the distance in y the image will be moved, can be negative
+	 */
 	public void moveImage(String name, int dx, int dy) {
 		window.moveImage(name,dx,dy);
 	}
 	
+	/**
+	 * @return The schema of the document
+	 */
 	public String getSchema() {
 		return document.getSchema();
 	}
@@ -349,7 +364,7 @@ public class MainController {
 		getInstance().figureMap.put("luna",  moon );
 		getInstance().figureMap.put("pastelfeliz",  heureusegateau );
 		getInstance().figureMap.put("peruana",  doratheexplorer );
-/*********************************************************************************
+/*---------------------------------------------------------------------------------------
 *		 TEXT AREA 
 *		 
 *		
@@ -391,14 +406,15 @@ public class MainController {
 //		getInstance().figureMap.get("sol").setMovement(0, 200, 15);
 //		getInstance().figureMap.get("sol").run();
  * 
- *******************************************************************/
-	}
-
-	public void hey()
-	{
-		letsAntlr();
+ ------------------------------------------------------------------------*/
 	}
 	
+	/**
+	 * Creates an image in the given position, so it can be animated
+	 * @param name The name of the image that will be defined for the animation
+	 * @param x Starting position of the defined image in the x-axis
+	 * @param y Starting position of the defined image in the y-axis
+	 */
 	public void defineFigure(String name, int x, int y)
 	{
 		figureMap.get(name).setVisible();
@@ -406,6 +422,13 @@ public class MainController {
 		runningFigures.add(name);
 	}
 	
+	/**
+	 * Slides a given image a distance during certain amount of time
+	 * @param name the name of the image that will be moved
+	 * @param dx   the distance in x the image will be moved, can be negative
+	 * @param dy   the distance in y the image will be moved, can be negative
+	 * @param time the amount of time(In seconds) the sliding will last
+	 */
 	public void moveFigure(String name, int dx, int dy, int time)
 	{
 		System.out.println("The Name is " + name);
@@ -418,6 +441,12 @@ public class MainController {
 		}
 	}
 	
+	/**
+	 * Moves a image(Instantly) a given amount of pixels
+	 * @param name the name of the image will be moved
+	 * @param dx   the distance in x the image will be moved, can be negative
+	 * @param dy   the distance in y the image will be moved, can be negative
+	 */
 	public void tpFigure(String name, int dx, int dy)
 	{
 		figureMap.get(name).setTp(dx, dy);
@@ -429,6 +458,10 @@ public class MainController {
 		}
 	}
 	
+	/**
+	 * A given image will become invisible in the canvas
+	 * @param name The name of the image
+	 */
 	public void hideFigure(String name)
 	{
 		figureMap.get(name).setHide();
@@ -439,10 +472,18 @@ public class MainController {
 		}
 	}
 	
+	/**
+	 * Prints in the IDE console any error that might appear
+	 * @param error
+	 */
 	public void setConsoleMsm(String error){
 		window.setConsoleMsm(error);
 	}
 	
+	/**
+	 * A given image will become visible in the canvas
+	 * @param name The name of the image
+	 */
 	public void showFigure(String name)
 	{
 		figureMap.get(name).setVisible();
@@ -453,31 +494,46 @@ public class MainController {
 		}
 	}
 	
+	/**
+	 * A given image will not execute any of it's future actions
+	 *  during the duration of the given time
+	 * @param name The name of the image
+	 * @param time Time the figure will be waiting, given in seconds
+	 */
 	public void waitFigure(String name, int time)
 	{
 		figureMap.get(name).setWait(time);
 		figureMap.get(name).run();
 	}
 	
-	public void doStuff(String s)
-	{
-		if(s.equals("compilar"))
-			letsAntlr();
-	}
-	
+	/**
+	 * Sets the modified field in Document to the boolean b received
+	 * @param b
+	 */
 	public void isModified(boolean b) {
 		document.setModified(b);
 	}
 	
+	/**
+	 * Forces a repaint in the Window and it's canvas component
+	 */
 	public void repaint() {
 		window.forceRepaint();
 	}
 	
+	/**
+	 * A given image will become either visible or invisible
+	 *  in the canvas
+	 * @param name The name of the given image
+	 * @param b    True if the image will become visible, false otherwise
+	 */
 	public void setVisible(String name, boolean b) {
 		window.setItemVisible(name, b);
-		
 	}
 	
+	/**
+	 * Starts the threads of the image defined in the document
+	 */
 	public void runThreads() {
 		System.out.println("Starting to run threads");
 		for(String s: runningFigures)
@@ -497,18 +553,8 @@ public class MainController {
 		}
 		System.out.println("Ending to run threads");
 	}
-	
-	public void stopThreads() {
-		System.out.println("Starting to run threads");
-		for(String s: runningFigures)
-		{
-			figureMap.get(s).stop();
-			System.out.println("Stoping " + s);
-		}
-		
-		System.out.println("Ending to stop threads");
-	}
 
+	//TODO
 	public boolean validImage(String string) {
 		return figureMap.containsKey(string);		
 	}

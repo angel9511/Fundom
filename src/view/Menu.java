@@ -25,6 +25,9 @@ public class Menu extends JMenuBar {
 		JMenu fileMenu = new JMenu( "Archivo" );
 		JMenuItem fileNew = new JMenuItem( "Nueva Animacion" );
 		fileNew.addActionListener( new ActionListener() {
+			/**
+			 * When clicked, this button creates a new document
+			 */
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{				
@@ -32,6 +35,12 @@ public class Menu extends JMenuBar {
 			}
 		});
 		
+		/**
+		 * When clicked, this button saves the current document,
+		 *  if the document is already saved, it saves it in the 
+		 *  same file, otherwise it prompts the user for a path
+		 *  to save it into
+		 */
 		JMenuItem fileSave = new JMenuItem( "Guardar" );
 		fileSave.addActionListener( new ActionListener() {
 			@Override
@@ -40,6 +49,10 @@ public class Menu extends JMenuBar {
 			}
 		});
 		
+		/**
+		 * When clicked, this button saves the current document, always
+		 *  prompts user for a path to save the document into
+		 */
 		JMenuItem fileSaveAs = new JMenuItem( "Guardar Como" );
 		fileSaveAs.addActionListener( new ActionListener() {
 			@Override
@@ -48,6 +61,9 @@ public class Menu extends JMenuBar {
 			}
 		});
 		
+		/**
+		 * When clicked, this button loads a document from disk
+		 */
 		JMenuItem fileLoad = new JMenuItem( "Cargar" );
 		fileLoad.addActionListener( new ActionListener() {
 			@Override
@@ -56,6 +72,9 @@ public class Menu extends JMenuBar {
 			}
 		});
 		
+		/**
+		 * When clicked, this button exits Fundom
+		 */
 		JMenuItem fileQuit = new JMenuItem( "Salir" );
 		fileQuit.addActionListener( new ActionListener() {
 			@Override
@@ -73,7 +92,10 @@ public class Menu extends JMenuBar {
 		fileMenu.add( fileQuit );
 		
 		JMenu editMenu = new JMenu( "Editar" );
-		
+		/**
+		 * When clicked, this button copies the highlighted 
+		 *  text into clipboard
+		 */
 		JMenuItem copy = new JMenuItem( "Copiar" );
 		copy.addActionListener( new ActionListener() {
 			@Override
@@ -82,6 +104,10 @@ public class Menu extends JMenuBar {
 			}
 		});
 		
+		/**
+		 * When clicked, this button cuts the highlighted
+		 *  text into clipboard
+		 */
 		JMenuItem cut = new JMenuItem( "Cortar" );
 		cut.addActionListener( new ActionListener() {
 			@Override
@@ -90,6 +116,10 @@ public class Menu extends JMenuBar {
 			}
 		});
 		
+		/**
+		 * When clicked, this button pastes text from the 
+		 *  clipboard into the document 
+		 */
 		JMenuItem paste = new JMenuItem( "Pegar" );
 		paste.addActionListener( new ActionListener() {
 			@Override
@@ -103,6 +133,11 @@ public class Menu extends JMenuBar {
 		editMenu.add( paste );
 		
 		JMenu insertMenu = new JMenu("Insertar codigo");
+		
+		/**
+		 * When clicked, this button inserts the code necessary
+		 *  to slide a image into the document
+		 */
 		JMenuItem mover = new JMenuItem("Mover imagen");
 		mover.addActionListener( new ActionListener() {
 			@Override
@@ -111,6 +146,10 @@ public class Menu extends JMenuBar {
 			}
 		});
 		
+		/**
+		 * When clicked, this button inserts the code necessary
+		 *  to move a image into the document
+		 */
 		JMenuItem tp = new JMenuItem("Teletransportar imagen");
 		tp.addActionListener( new ActionListener() {
 			@Override
@@ -119,6 +158,10 @@ public class Menu extends JMenuBar {
 			}
 		});
 		
+		/**
+		 * When clicked, this button inserts the code necessary
+		 *  to make an image wait into the document
+		 */
 		JMenuItem esperar = new JMenuItem("Esperar imagen");
 		esperar.addActionListener( new ActionListener() {
 			@Override
@@ -127,6 +170,10 @@ public class Menu extends JMenuBar {
 			}
 		});
 		
+		/**
+		 * When clicked, this button inserts the code necessary
+		 *  to hide a image into the document
+		 */
 		JMenuItem ocultar = new JMenuItem("Ocultar imagen");
 		ocultar.addActionListener( new ActionListener() {
 			@Override
@@ -135,6 +182,10 @@ public class Menu extends JMenuBar {
 			}
 		});
 		
+		/**
+		 * When clicked, this button inserts the code necessary
+		 *  to show a image into the document
+		 */
 		JMenuItem mostrar = new JMenuItem("Mostrar imagen");
 		mostrar.addActionListener( new ActionListener() {
 			@Override
@@ -150,6 +201,9 @@ public class Menu extends JMenuBar {
 		insertMenu.add(ocultar);
 		
 		JMenu compileMenu = new JMenu("Ejecutar");
+		/**
+		 * When clicked, this button compiles the document
+		 */
 		JMenuItem compile = new JMenuItem("Compilar");
 		compile.addActionListener( new ActionListener() {
 			@Override
@@ -164,6 +218,9 @@ public class Menu extends JMenuBar {
 		
 		compileMenu.add(compile);
 		
+		/**
+		 * When clicked, this button shows some info about the developers of Fundom
+		 */
 		JMenuItem helpMenu = new JMenuItem("Acerca");
 		helpMenu.addActionListener( new ActionListener() {
 			@Override

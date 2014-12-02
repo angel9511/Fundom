@@ -14,12 +14,13 @@ import controller.MainController;
 
 public class ButtonLibrary extends JPanel {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	BoxLayout by = new BoxLayout(this, BoxLayout.Y_AXIS);
 	
+	/**
+	 * Creates the buttons that let the user modify the document 
+	 * @param e The Editor where the document that is going to be modified is 
+	 */
 	public ButtonLibrary(Editor e) {
 		setLayout(by);
 		TextButton mover = new TextButton("Mover", GrammarMap.getGrammar().get("mover"), e);
@@ -34,5 +35,4 @@ public class ButtonLibrary extends JPanel {
 		add(ocultar);
 		add(mostrar);
 	}
-	
 }

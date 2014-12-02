@@ -23,6 +23,11 @@ public class ImageLibrary extends JPanel{
 	public Map<String, BufferedImage> imageDictionary = new HashMap<String, BufferedImage>();
 	GridLayout gy = new GridLayout(4, 2);
 	
+	/**
+	 * Creates a library of the ImageButtons, it will contain all the ImageButtons
+	 *  for all the different Images that can be inserted into the document
+	 * @param e The editor that will be modified when the buttons are clicked
+	 */
 	public ImageLibrary(Editor e) {
 		setLayout(gy);
 		BufferedImage ghost = null;

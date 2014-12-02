@@ -18,8 +18,13 @@ public class Canvas extends JPanel {
 	
 	public Map<String, ImageENation> imageDictionary = new HashMap<String, ImageENation>();
 	private List<ImageENation>  elements = new LinkedList<>();
+	
+	/**
+	 * Loads into objects the images that will be used by the user
+	 *  in their animations, then it creates a list with those images
+	 *  and a map where their names are the keys
+	 */
 	public Canvas() {
-		
 		try {
 			ghost.setI(ImageIO.read(Canvas.class.getResourceAsStream("/images/1.jpg")));
 			 zero.setI(ImageIO.read(Canvas.class.getResourceAsStream("/images/2.jpg")));
@@ -148,11 +153,20 @@ public class Canvas extends JPanel {
 		elements.add( doratheexplorer );
 	}
 
+	/**
+	 * Moves a given image a given distance(Instantly)
+	 * @param name the name of the image that will be moved
+	 * @param dx   the distance in x the image will be moved, can be negative
+	 * @param dy   the distance in y the image will be moved, can be negative
+	 */
 	public void moveImage(String name, int dx, int dy) {
 		imageDictionary.get(name).setX(imageDictionary.get(name).getX()+dx);
 		imageDictionary.get(name).setY(imageDictionary.get(name).getY()+dy);
 	}
 	
+	/**
+	 * Draws every image that is visible into the canvas
+	 */
 	@Override
 	public void paint(Graphics g)
 	{
@@ -164,6 +178,12 @@ public class Canvas extends JPanel {
 		}
 	}
 	
+	/**
+	 * A given image will become either visible or invisible
+	 *  in the canvas
+	 * @param name The name of the given image
+	 * @param b    True if the image will become visible, false otherwise
+	 */
 	public void setItemVisible(String name, boolean b) {
 		imageDictionary.get(name).setVisible(b);		
 	}
@@ -209,6 +229,4 @@ public class Canvas extends JPanel {
 	private ImageENation moon = new ImageENation();
 	private ImageENation heureusegateau = new ImageENation();
 	private ImageENation doratheexplorer = new ImageENation();
-	
-	
 }
