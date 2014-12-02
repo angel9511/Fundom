@@ -28,11 +28,18 @@ public class Figure extends Thread {
 		{
 			if(time == 0)
 			{
+				if(dx < 0 || dy < 0){
 				dy = -dy;
 				dx = -dx;
 				currentdy = dy;
 				currentdx = dx;
 				MainController.getInstance().moveImage(name, -dx, -dy);
+				}
+				else{
+					currentdy = dy;
+					currentdx = dx;
+					MainController.getInstance().moveImage(name, dx, dy);
+				}
 			}
 			if(currentdy < Math.abs(dy) && currentdx < Math.abs(dx)){
 				currentdy++;
