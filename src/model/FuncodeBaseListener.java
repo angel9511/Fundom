@@ -107,12 +107,13 @@ public class FuncodeBaseListener implements FuncodeListener {
 					c++;
 					c++;
 					futureInt = "" + a.charAt(c);
+					System.out.println(c + "  " + a.length() + "  Wazzap! " + futureInt);
 					while(c< a.length()-1 && (a.charAt(c+1) == '1' || a.charAt(c+1) == '2' || a.charAt(c+1) == '3' || a.charAt(c+1) == '4' || a.charAt(c+1) == '5' || a.charAt(c+1) == '6' || a.charAt(c+1) == '7' || a.charAt(c+1) == '8' || a.charAt(c+1) == '9' || a.charAt(c+1) == '0'))
 					{
 						c++;
 						futureInt+= a.charAt(c);
 					}
-					variabley.add(Integer.parseInt("" + a.charAt(c)));
+					variabley.add(Integer.parseInt(futureInt));
 				}
 				else
 					s= s + a.charAt(c);
@@ -286,7 +287,7 @@ public class FuncodeBaseListener implements FuncodeListener {
 						}
 						if (time > 0)
 							if (variable.contains(name))
-								MainController.getInstance().moveFigure(name, 0 , - Integer.parseInt(futureInt),time);															
+								MainController.getInstance().moveFigure(name, 0 ,  -Integer.parseInt(futureInt),time);															
 								else
 									MainController.getInstance().setConsoleMsm("La imagen '"+name+"' no ha sido insertada\n");
 						else
@@ -360,7 +361,14 @@ public class FuncodeBaseListener implements FuncodeListener {
 						}
 						else{
 							if(c+10 < a.length() && a.substring(0, c+10).contains("esperar")){
-								// MainController.getInstance().waitFigure(name, time);
+								c = c+15;
+								String futureInt = "" + a.charAt(c);
+								while(c< a.length()-1 && (a.charAt(c+1) == '1' || a.charAt(c+1) == '2' || a.charAt(c+1) == '3' || a.charAt(c+1) == '4' || a.charAt(c+1) == '5' || a.charAt(c+1) == '6' || a.charAt(c+1) == '7' || a.charAt(c+1) == '8' || a.charAt(c+1) == '9' || a.charAt(c+1) == '0'))
+								{
+									c++;
+									futureInt+= a.charAt(c);
+								}
+								MainController.getInstance().waitFigure(name, Integer.parseInt(futureInt));
 								c = a.length()+17;
 							}
 						}

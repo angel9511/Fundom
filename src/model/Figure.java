@@ -24,7 +24,7 @@ public class Figure extends Thread {
 	{
 		int currentdx = 0;
 		int currentdy = 0;
-		while(currentdy < dy || currentdx < dx)
+		while(currentdy <  Math.abs(dy) || currentdx <  Math.abs(dx))
 		{
 			if(time == 0)
 			{
@@ -50,7 +50,7 @@ public class Figure extends Thread {
 				}
 			}
 			try {
-				this.sleep(time * 1000 / Math.abs(Math.max(dx, dy))+1);
+				this.sleep(time * 1000 / (( Math.max(Math.abs(dx), Math.abs(dy) ))+1));
 				MainController.getInstance().repaint();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
