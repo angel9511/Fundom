@@ -13,6 +13,16 @@ import java.util.List;
 import java.util.Iterator;
 import java.util.ArrayList;
 
+/**
+ * This class is the Funcode Parser. How it works? 
+ * For each non-terminal rule defined on the ANTLR4 document, we have a
+ * context class, were is defined the methods for enter on a rule and exit
+ * of a rule. Next, on the FuncodeParser class, a method ContextClass type is
+ * create, were the program try to tour the non-terminal rules for every rule.
+ * If it can tour it, display a error message that display the error type and
+ * his location
+ *
+ */
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class FuncodeParser extends Parser {
 	protected static final DFA[] _decisionToDFA;

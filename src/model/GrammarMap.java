@@ -5,6 +5,11 @@ import java.util.Map;
 
 public abstract class GrammarMap {
 
+	/**
+	 * Create and return a dictionary of strings. This dictionary has the
+	 * code to insert when the given button is pressed.
+	 * @return
+	 */
 	public static Map<String, String> getGrammar(){
 		Map<String , String> buttons = new HashMap<String, String>();
 		buttons.put("insertar", "\t \t _____ : insertar \n"

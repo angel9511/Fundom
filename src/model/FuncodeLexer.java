@@ -23,7 +23,7 @@ public class FuncodeLexer extends Lexer {
 	public static String[] modeNames = {
 		"DEFAULT_MODE"
 	};
-
+	
 	public static final String[] tokenNames = {
 		"<INVALID>",
 		"','", "':'", "'inicio'", "'FUN'", "'elementos'", "'animacion'", "'mover'", 
@@ -37,7 +37,6 @@ public class FuncodeLexer extends Lexer {
 		"INSERTAR", "TIEMPO", "SEG", "NEWLINE", "HACIA", "SIMBOLO", "NUMERO", 
 		"NOMBRE"
 	};
-
 
 	public FuncodeLexer(CharStream input) {
 		super(input);
