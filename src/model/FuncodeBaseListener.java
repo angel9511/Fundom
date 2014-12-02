@@ -340,7 +340,7 @@ public class FuncodeBaseListener implements FuncodeListener {
 						c = a.length()+17;
 					}
 					
-				}
+				}/* * * * * * * * * */
 				else {
 					if(c+10 < a.length() && a.substring(0, c+10).contains("ocultar")){
 						c = c+7;
@@ -370,6 +370,75 @@ public class FuncodeBaseListener implements FuncodeListener {
 								}
 								MainController.getInstance().waitFigure(name, Integer.parseInt(futureInt));
 								c = a.length()+17;
+							}
+							if(c+10 < a.length() && a.substring(0, c+5).contains("tp")){
+								c = c+13;
+								System.out.println("tping " + a.subSequence(c, c+9));
+								if(c+9 < a.length() && a.substring(c, c+9).contains("derecha"))
+								{
+									c = c+13;
+									String futureInt = "" + a.charAt(c);
+									while(c< a.length()-1 && (a.charAt(c+1) == '1' || a.charAt(c+1) == '2' || a.charAt(c+1) == '3' || a.charAt(c+1) == '4' || a.charAt(c+1) == '5' || a.charAt(c+1) == '6' || a.charAt(c+1) == '7' || a.charAt(c+1) == '8' || a.charAt(c+1) == '9' || a.charAt(c+1) == '0'))
+									{
+										c++;
+										futureInt+= a.charAt(c);
+									}
+									System.out.println("Future " + futureInt);
+										if (variable.contains(name))
+											MainController.getInstance().tpFigure(name, Integer.parseInt(futureInt), 0);
+										else
+											MainController.getInstance().setConsoleMsm("La imagen '"+name+"' no ha sido insertada\n");
+									c = a.length()+17;
+								}
+								if(c+9 < a.length() && a.substring(c, c+9).contains("izquierda"))
+								{
+									c = c+15;
+									String futureInt = "" + a.charAt(c);
+									while(c< a.length()-1 && (a.charAt(c+1) == '1' || a.charAt(c+1) == '2' || a.charAt(c+1) == '3' || a.charAt(c+1) == '4' || a.charAt(c+1) == '5' || a.charAt(c+1) == '6' || a.charAt(c+1) == '7' || a.charAt(c+1) == '8' || a.charAt(c+1) == '9' || a.charAt(c+1) == '0'))
+									{
+										c++;
+										futureInt+= a.charAt(c);
+									}
+									System.out.println("Future " + futureInt);
+										if (variable.contains(name))
+											MainController.getInstance().tpFigure(name, -Integer.parseInt(futureInt), 0);
+										else
+											MainController.getInstance().setConsoleMsm("La imagen '"+name+"' no ha sido insertada\n");
+									c = a.length()+17;
+								}
+								if(c+9 < a.length() && a.substring(c, c+9).contains("arriba"))
+								{
+									c = c+12;
+									String futureInt = "" + a.charAt(c);
+									while(c< a.length()-1 && (a.charAt(c+1) == '1' || a.charAt(c+1) == '2' || a.charAt(c+1) == '3' || a.charAt(c+1) == '4' || a.charAt(c+1) == '5' || a.charAt(c+1) == '6' || a.charAt(c+1) == '7' || a.charAt(c+1) == '8' || a.charAt(c+1) == '9' || a.charAt(c+1) == '0'))
+									{
+										c++;
+										futureInt+= a.charAt(c);
+									}
+									System.out.println("Future " + futureInt);
+										if (variable.contains(name))
+											MainController.getInstance().tpFigure(name, 0, -Integer.parseInt(futureInt));
+										else
+											MainController.getInstance().setConsoleMsm("La imagen '"+name+"' no ha sido insertada\n");
+									c = a.length()+17;
+								}
+								if(c+9 < a.length() && a.substring(c, c+9).contains("abajo"))
+								{
+									c = c+11;
+									String futureInt = "" + a.charAt(c);
+									while(c< a.length()-1 && (a.charAt(c+1) == '1' || a.charAt(c+1) == '2' || a.charAt(c+1) == '3' || a.charAt(c+1) == '4' || a.charAt(c+1) == '5' || a.charAt(c+1) == '6' || a.charAt(c+1) == '7' || a.charAt(c+1) == '8' || a.charAt(c+1) == '9' || a.charAt(c+1) == '0'))
+									{
+										c++;
+										futureInt+= a.charAt(c);
+									}
+									System.out.println("Future " + futureInt);
+										if (variable.contains(name))
+											MainController.getInstance().tpFigure(name, 0, Integer.parseInt(futureInt));
+										else
+											MainController.getInstance().setConsoleMsm("La imagen '"+name+"' no ha sido insertada\n");
+									c = a.length()+17;
+								}
+								
 							}
 						}
 					}

@@ -169,6 +169,7 @@ public class Canvas extends JPanel {
 	 * @param dy   the distance in y the image will be moved, can be negative
 	 */
 	public void moveImage(String name, int dx, int dy) {
+		System.out.println(dx + " movin' "+ dy);
 		imageDictionary.get(name).setX(imageDictionary.get(name).getX()+dx);
 		imageDictionary.get(name).setY(imageDictionary.get(name).getY()+dy);
 	}
