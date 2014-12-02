@@ -87,7 +87,7 @@ public class Menu extends JMenuBar {
 		fileMenu.add( fileLoad );
 		fileMenu.addSeparator();
 		fileMenu.add( fileSave );
-		fileMenu.add( fileSaveAs );
+		//fileMenu.add( fileSaveAs );
 		fileMenu.addSeparator();
 		fileMenu.add( fileQuit );
 		

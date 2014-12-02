@@ -76,7 +76,6 @@ public class MainController {
 			try {
 				figureMap.get(s).join();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			System.out.println("Hiding " + s);
