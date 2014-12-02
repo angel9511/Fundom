@@ -147,7 +147,12 @@ public class MainFrame extends JFrame{
 		canvas.setItemVisible(name, b);
 	}
 
-	//TODO
+	/**
+	 * A given error string become visible on the console. 
+	 * The error string is append to the existing
+	 * @param error The error to display
+	 * 
+	 */
 	public void setConsoleMsm(String error) {
 		try {
 		      Document doc = console.getDocument();

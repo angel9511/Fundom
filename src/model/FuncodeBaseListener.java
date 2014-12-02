@@ -76,9 +76,9 @@ public class FuncodeBaseListener implements FuncodeListener {
 	@Override public void exitTime(@NotNull FuncodeParser.TimeContext ctx) { }
 
 	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
+	 * Reads the incoming string and split it. Next take information referent to the insert block
+	 * of the code. Can sent error messages and define the given figures. 
+	 * 
 	 */
 	@Override public void enterDefining(@NotNull FuncodeParser.DefiningContext ctx) 
 	{ 
@@ -137,9 +137,9 @@ public class FuncodeBaseListener implements FuncodeListener {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 *Read all the animation block and take all the information about it. Set the animation methods
+	 *(move, tp, hide, show, wait) and can send error messages.
 	 *
-	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void enterPreaction(@NotNull FuncodeParser.PreactionContext ctx) 
 	{

@@ -5,13 +5,6 @@ import java.awt.Frame;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
-
-import org.antlr.v4.runtime.*; 
-import org.antlr.v4.runtime.misc.Interval;
-import org.antlr.v4.runtime.misc.NotNull;
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
-
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
@@ -24,16 +17,18 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 
-
-
-
-
 import model.Document;
 import model.Figure;
 import model.FuncodeBaseListener;
 import model.FuncodeErrorListener;
 import model.FuncodeLexer;
 import model.FuncodeParser;
+
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
+
 import view.MainFrame;
 
 public class MainController {
@@ -64,7 +59,11 @@ public class MainController {
 	
 	/**
 	 * Compiles the code written in the code editor using ANTLR
-	 *///TODO Further documentate this method
+	 * Create a instance of a charStream with a string get from
+	 * texteditor. Next, create a lexer, inicialize the tokens and
+	 * create the parser with the charStram. Next, add the custom
+	 * error listener and run the lenguaje interpreter 
+	 */
 	public void letsAntlr(){
 		this.text = window.getText();
 		try { 
@@ -274,7 +273,6 @@ public class MainController {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		getInstance().figureMap  = new HashMap<>();
 		getInstance().runningFigures = new LinkedList<>();
 		System.out.println("There should be a window 0");
@@ -554,7 +552,11 @@ public class MainController {
 		System.out.println("Ending to run threads");
 	}
 
-	//TODO
+	/**
+	 * Check if a inserted image exist on the library
+	 * @param string name of the image to check
+	 * @return
+	 */
 	public boolean validImage(String string) {
 		return figureMap.containsKey(string);		
 	}

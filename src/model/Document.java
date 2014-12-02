@@ -7,11 +7,18 @@ import java.io.ObjectOutputStream;
 import controller.MainController;
 
 public class Document {
-
+	
+	/**
+	 * Document constructor. Calls initialize method
+	 */
 	public Document(){
 		this.initialize();
 	}
 	
+	/**
+	 * Set field modified in false and assign a empty name
+	 * also set field schema with the initial code.
+	 */
 	public void initialize()
 	{
 		modified = false;
@@ -24,6 +31,11 @@ public class Document {
 				+ "FUN";	
 	}
 	
+	/**
+	 * Read from a ObjectInputStream the name and
+	 * the string on the document and set it
+	 * @param ois
+	 */
 	@SuppressWarnings("unchecked")
 	public void load(ObjectInputStream ois) {
 		try {		
@@ -36,7 +48,12 @@ public class Document {
 		setModified(false);
 	}
 	
-
+	/**
+	 * Write on a ObjectOutputStream the schema and the 
+	 * name of the document. Also set the document as non-
+	 * modified
+	 * @param oos
+	 */
 	public void save(ObjectOutputStream oos) {
 
 		try {
@@ -49,6 +66,15 @@ public class Document {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	/**
+	 * Return the boolean modified value
+	 * @return
+	 */
+	public boolean isModified()
+	{
+		return modified;
 	}
 	
 	public String getSchema() {
@@ -64,10 +90,6 @@ public class Document {
 		this.name = name;
 	}
 	
-	public boolean isModified()
-	{
-		return modified;
-	}
 	
 	public void setText(String t)
 	{
